@@ -34,7 +34,7 @@ class Test(unittest.TestCase):
         Create, build and deploy the contracts:
         ''')
         create_account("token", master)
-        token_contract = Contract(token, "/root/ore-protocol/contracts/build/ore.standard_token")
+        token_contract = Contract(token, "/root/ore-protocol/contracts/build/ore.standard_token", "ore.standard_token.abi", "ore.standard_token.wasm")
         token_contract.build()
         token_contract.deploy()
 

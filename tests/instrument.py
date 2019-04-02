@@ -29,16 +29,15 @@ class Test(unittest.TestCase):
     def setUp(self):
         pass
 
-
     def test_01(self):
 
         create_account("right", master, account_name="rights.ore")
-        right_contract = Contract(right, "/root/ore-protocol/contracts/build/ore.rights_registry")
+        right_contract = Contract(right, "/root/ore-protocol/contracts/build/ore.rights_registry", "ore.rights_registry.abi", "ore.rights_registry.wasm")
         right_contract.build()
         right_contract.deploy()
 
         create_account("instr", master, account_name="instr.ore")
-        instr_contract = Contract(instr, "/root/ore-protocol/contracts/build/ore.instrument")
+        instr_contract = Contract(instr, "/root/ore-protocol/contracts/build/ore.instrument", "ore.instrument.abi", "ore.instrument.wasm")
         instr_contract.build()
         instr_contract.deploy()
 
