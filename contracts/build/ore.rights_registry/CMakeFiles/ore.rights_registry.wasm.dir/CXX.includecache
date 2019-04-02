@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../ore.rights_registry/include/ore.rights_registry.hpp
+string
+-
+eosiolib/eosio.hpp
+../ore.rights_registry/include/eosiolib/eosio.hpp
+ore.types.h
+../ore.rights_registry/include/ore.types.h
+
+../ore.rights_registry/include/ore.types.h
+eosiolib/transaction.hpp
+../ore.rights_registry/include/eosiolib/transaction.hpp
+string
+-
+
+/Users/basar/Workspace/ore-protocol/contracts/ore.rights_registry/src/ore.rights_registry.cpp
+ore.rights_registry.hpp
+/Users/basar/Workspace/ore-protocol/contracts/ore.rights_registry/src/ore.rights_registry.hpp
+
