@@ -1,4 +1,4 @@
-#include "ore.rights_registry.hpp"
+#include "../include/ore.rights_registry.hpp"
 
 using namespace eosio;
 

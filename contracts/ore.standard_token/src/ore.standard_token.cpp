@@ -13,7 +13,7 @@
  * in the implementation of the same functions in ore.instrument contract.
  */
 
-#include "ore.standard_token.hpp"
+#include "../include/ore.standard_token.hpp"
 
 namespace eosio
 {
