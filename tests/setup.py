@@ -3,11 +3,11 @@ from eosfactory.eosf import *
 
 verbosity([Verbosity.INFO, Verbosity.OUT, Verbosity.TRACE, Verbosity.DEBUG])
 
-STANDARD_TOKEN = "~/Workspace/testeos/contracts/build/ore.standard_token/"
-RIGHTS_REGISTRY = "~/Workspace/ore-protocol/contracts/build/ore.rights_registry/"
-INSTRUMENT = "~/Workspace/ore-protocol/contracts/build/ore.instrument/"
-USAGE_LOG = "~/Workspace/ore-protocol/contracts/build/ore.usage_log/"
-APIM_MANAGER = "~/Workspace/ore-protocol/contracts/build/apim.manager/"
+STANDARD_TOKEN = "~/Workspace/testeos/contracts/ore.standard_token/"
+RIGHTS_REGISTRY = "~/Workspace/ore-protocol/contracts/ore.rights_registry/"
+INSTRUMENT = "~/Workspace/ore-protocol/contracts/ore.instrument/"
+USAGE_LOG = "~/Workspace/ore-protocol/contracts/ore.usage_log/"
+APIM_MANAGER = "~/Workspace/ore-protocol/contracts/apim.manager/"
 
 class Test(unittest.TestCase):
 
