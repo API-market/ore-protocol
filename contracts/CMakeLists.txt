@@ -29,12 +29,6 @@ else()
    set(TEST_BUILD_TYPE ${CMAKE_BUILD_TYPE})
 endif()
 
-
-add_subdirectory(eosio.bios)
-add_subdirectory(eosio.msig)
-add_subdirectory(eosio.wrap)
-add_subdirectory(eosio.system)
-add_subdirectory(eosio.token)
 add_subdirectory(ore.system)
 add_subdirectory(ore.standard_token)
 add_subdirectory(ore.rights_registry)
