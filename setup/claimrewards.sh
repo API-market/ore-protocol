@@ -1,0 +1,1 @@
+cleos system claimrewards producer1

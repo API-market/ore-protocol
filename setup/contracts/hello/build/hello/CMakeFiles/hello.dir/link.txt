@@ -1,0 +1,1 @@
+//usr/local/bin/eosio-ld  CMakeFiles/hello.dir/hello.obj -o hello.wasm 

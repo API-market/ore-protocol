@@ -1,0 +1,3 @@
+/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/oresystem/CMakeFiles/rebuild_cache.dir
+/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/oresystem/CMakeFiles/edit_cache.dir
+/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/oresystem/CMakeFiles/oresystem.dir

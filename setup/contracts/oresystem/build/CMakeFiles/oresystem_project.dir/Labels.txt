@@ -1,0 +1,14 @@
+# Target labels
+ oresystem_project
+# Source files and their labels
+/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/CMakeFiles/oresystem_project
+/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/CMakeFiles/oresystem_project.rule
+/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/CMakeFiles/oresystem_project-complete.rule
+/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/oresystem_project-prefix/src/oresystem_project-stamp/oresystem_project-install.rule
+/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/oresystem_project-prefix/src/oresystem_project-stamp/oresystem_project-mkdir.rule
+/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/oresystem_project-prefix/src/oresystem_project-stamp/oresystem_project-download.rule
+/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/oresystem_project-prefix/src/oresystem_project-stamp/oresystem_project-update.rule
+/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/oresystem_project-prefix/src/oresystem_project-stamp/oresystem_project-patch.rule
+/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/oresystem_project-prefix/src/oresystem_project-stamp/oresystem_project-configure.rule
+/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/oresystem_project-prefix/src/oresystem_project-stamp/oresystem_project-build.rule
+/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/oresystem_project-prefix/src/oresystem_project-stamp/oresystem_project-test.rule

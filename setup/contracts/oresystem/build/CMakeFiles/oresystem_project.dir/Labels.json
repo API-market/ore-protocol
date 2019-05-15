@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/CMakeFiles/oresystem_project"
+		},
+		{
+			"file" : "/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/CMakeFiles/oresystem_project.rule"
+		},
+		{
+			"file" : "/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/CMakeFiles/oresystem_project-complete.rule"
+		},
+		{
+			"file" : "/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/oresystem_project-prefix/src/oresystem_project-stamp/oresystem_project-install.rule"
+		},
+		{
+			"file" : "/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/oresystem_project-prefix/src/oresystem_project-stamp/oresystem_project-mkdir.rule"
+		},
+		{
+			"file" : "/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/oresystem_project-prefix/src/oresystem_project-stamp/oresystem_project-download.rule"
+		},
+		{
+			"file" : "/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/oresystem_project-prefix/src/oresystem_project-stamp/oresystem_project-update.rule"
+		},
+		{
+			"file" : "/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/oresystem_project-prefix/src/oresystem_project-stamp/oresystem_project-patch.rule"
+		},
+		{
+			"file" : "/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/oresystem_project-prefix/src/oresystem_project-stamp/oresystem_project-configure.rule"
+		},
+		{
+			"file" : "/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/oresystem_project-prefix/src/oresystem_project-stamp/oresystem_project-build.rule"
+		},
+		{
+			"file" : "/Users/basar/Workspace/eosio-folders/contracts/oresystem/build/oresystem_project-prefix/src/oresystem_project-stamp/oresystem_project-test.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"oresystem_project"
+		],
+		"name" : "oresystem_project"
+	}
+}
