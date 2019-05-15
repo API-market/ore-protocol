@@ -9,7 +9,7 @@ using std::vector;
 
 namespace common {
     static const symbol S_RAM = symbol("RAMCORE", 4);
-    static const name oresystem = name("oresystem");
+    static const name ore_system = name("oresystem");
 
     inline static uint64_t toUUID(string username){
         return std::hash<string>{}(username);
@@ -64,7 +64,7 @@ namespace common {
      * @return
      */
     symbol getCoreSymbol(){
-        Token token(oresystem, oresystem.value);
+        Token token(ore_system, ore_system.value);
         return token.begin()->S_SYS;
     }
 
@@ -72,7 +72,7 @@ namespace common {
      * Returns the contract name for new account action
      */
     name getNewAccountContract(){
-        Token token(oresystem, oresystem.value);
+        Token token(ore_system, ore_system.value);
         return token.begin()->newaccountcontract;
     }
 
@@ -80,7 +80,7 @@ namespace common {
      * Returns the minimum bytes of RAM for new account creation
      */
     uint64_t getMinimumRAM(){
-        Token token(oresystem, oresystem.value);
+        Token token(ore_system, ore_system.value);
         return token.begin()->min_ram;
     }
 

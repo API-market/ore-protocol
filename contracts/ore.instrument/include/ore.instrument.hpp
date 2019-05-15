@@ -123,7 +123,6 @@ class [[eosio::contract("ore.instrument")]] instrument : public eosio::contract
     }
 
     //actions
-    ACTION approve(name from, name to, uint64_t token_id);
     ACTION mint(name minter, name owner, instrument_data instrument, uint64_t start_time, uint64_t end_time, uint64_t instrumentId);
     ACTION checkright(name minter, name issuer, string rightname, uint64_t deferred_transaction_id);
     ACTION update(name updater, string instrument_template, instrument_data instrument, uint64_t instrument_id, uint64_t start_time, uint64_t end_time);
