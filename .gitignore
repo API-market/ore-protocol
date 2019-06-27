@@ -30,14 +30,15 @@
 *.exe
 *.out
 *.app
-build/*
-contracts/build/*
+*build/*
 
 #other
 .DS_Store
 .pem
 .env
 .vscode
+
+
 
 scripts/scriptout/*
 scripts/importkeys_prod.sh

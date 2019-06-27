@@ -3,16 +3,16 @@
 
 // Setting newaccount parameters and the price in terms of ORE
 // IMPORTANT: since bwpricerate is uint, ORE price needs to be equal or more than required SYS
-ACTION oresystem::setprice(asset createprice, uint64_t rambytes, asset netamount, asset cpuamount, uint64_t bwpricerate)
+ACTION oresystem::setprice(asset createprice, uint64_t rambytes, asset netamount, asset cpuamount, uint64_t bwpricerate, uint64_t pricekey)
 {
     require_auth(_self);
 
-    auto priceitr = _prices.find(name("ore").value);
+    auto priceitr = _prices.find(pricekey);
 
     if (priceitr == _prices.end())
     {
         _prices.emplace(_self, [&](auto &p) {
-            p.key = name("ore").value;
+            p.key = pricekey;
             p.createprice = createprice;
             p.rambytes = rambytes;
             p.netamount = netamount;
@@ -35,13 +35,14 @@ ACTION oresystem::setprice(asset createprice, uint64_t rambytes, asset netamount
 ACTION oresystem::createoreacc(name creator,
                                name newname,
                                public_key &ownerkey,
-                               public_key &activekey)
+                               public_key &activekey,
+                               uint64_t pricekey)
 {
 
     authority ownerauth{.threshold = 1, .keys = {key_weight{ownerkey, 1}}, .accounts = {}, .waits = {}};
     authority activeauth{.threshold = 1, .keys = {key_weight{activekey, 1}}, .accounts = {}, .waits = {}};
 
-    auto priceitr = _prices.find(name("ore").value);
+    auto priceitr = _prices.find(pricekey);
     check(priceitr != _prices.end(), "No price table");
 
     // Get the ramprice and calculate the amount of SYS to be locked

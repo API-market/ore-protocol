@@ -24,18 +24,19 @@ private:
       EOSLIB_SERIALIZE(oreprice, (key)(createprice)(rambytes)(netamount)(cpuamount)(bwpricerate))
    };
 
-   typedef eosio::multi_index<"oreprice"_n, oreprice> orepricetable;
+   typedef eosio::multi_index<"pricetable"_n, oreprice> orepricetable;
 
 public:
    using contract::contract;
    oresystem(name receiver, name code, datastream<const char *> ds)
        : contract(receiver, code, ds), _prices(receiver, receiver.value) {}
 
-   ACTION setprice(asset createprice, uint64_t rambytes, asset netamount, asset cpuamount, uint64_t bwpricerate);
+   ACTION setprice(asset createprice, uint64_t rambytes, asset netamount, asset cpuamount, uint64_t bwpricerate, uint64_t pricekey);
    ACTION createoreacc(name creator,
                         name newname,
                         public_key &ownerkey,
-                        public_key &activekey);
+                        public_key &activekey,
+                        uint64_t pricekey);
    ACTION delegatebw(name from, name receiver,
                      asset stake_net_quantity, 
                      asset stake_cpu_quantity);
@@ -51,8 +52,8 @@ public:
    //possibly different accounts that has different uses
    static constexpr name token_account{"eosio.token"_n};
    static constexpr name ore_system{"oresystem"_n};
-   static constexpr name sys_lock{"oresystem"_n};
-   static constexpr name ore_lock{"oresystem"_n};
+   static constexpr name sys_lock{"syslock"_n};
+   static constexpr name ore_lock{"orelock"_n};
    static constexpr name sys_payer{"oresystem"_n};
    static constexpr symbol ore_symbol = symbol(symbol_code("ORE"), 4);
    static constexpr symbol sys_symbol = symbol(symbol_code("SYS"), 4);

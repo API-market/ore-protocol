@@ -1,1 +1,0 @@
-//usr/local/bin/eosio-ld  CMakeFiles/oresystem.dir/oresystem.obj -o oresystem.wasm 
