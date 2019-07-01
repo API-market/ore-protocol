@@ -23,4 +23,4 @@ sleep 3s
 cleos transfer oresystem createbridge "100.0000 ORE" "test.com,50,10" -p oresystem
 
 sleep 3s
-cleos push action createbridge create '["oresystem","producer4","EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn","EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn","test.com"]' -p oresystem
+cleos push action createbridge create '["oresystem","producer4321","EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn","EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn","test.com"]' -p oresystem

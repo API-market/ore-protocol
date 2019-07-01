@@ -23,8 +23,26 @@ private:
       uint64_t primary_key() const { return key; }
       EOSLIB_SERIALIZE(oreprice, (key)(createprice)(rambytes)(netamount)(cpuamount)(bwpricerate))
    };
-
    typedef eosio::multi_index<"pricetable"_n, oreprice> orepricetable;
+
+   TABLE reflog
+   {
+      name referral;
+      name newaccount;
+
+      uint64_t primary_key() const { return newaccount.value; }
+      EOSLIB_SERIALIZE(reflog, (referral)(newaccount))
+   };
+   
+
+   TABLE refstats
+   {
+      uint64_t pricekey;
+      uint64_t count;
+
+      uint64_t primary_key() const { return pricekey; }
+      EOSLIB_SERIALIZE(refstats, (pricekey)(count))
+   };
 
 public:
    using contract::contract;
@@ -36,7 +54,9 @@ public:
                         name newname,
                         public_key &ownerkey,
                         public_key &activekey,
-                        uint64_t pricekey);
+                        uint64_t pricekey,
+                        name referral
+                        );
    ACTION delegatebw(name from, name receiver,
                      asset stake_net_quantity, 
                      asset stake_cpu_quantity);
@@ -48,6 +68,9 @@ public:
    ACTION sellram(name account, int64_t bytes);
 
    orepricetable _prices;
+
+   typedef eosio::multi_index<"reflog"_n, reflog> referrallogtable;
+   typedef eosio::multi_index<"refstats"_n, refstats> referralstatstable;
 
    //possibly different accounts that has different uses
    static constexpr name token_account{"eosio.token"_n};

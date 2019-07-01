@@ -36,7 +36,9 @@ ACTION oresystem::createoreacc(name creator,
                                name newname,
                                public_key &ownerkey,
                                public_key &activekey,
-                               uint64_t pricekey)
+                               uint64_t pricekey,
+                               name referral
+                               )
 {
 
     authority ownerauth{.threshold = 1, .keys = {key_weight{ownerkey, 1}}, .accounts = {}, .waits = {}};
@@ -44,10 +46,29 @@ ACTION oresystem::createoreacc(name creator,
 
     auto priceitr = _prices.find(pricekey);
     check(priceitr != _prices.end(), "No price table");
+    referralstatstable _stats(_self, referral.value);
+    auto statsitr = _stats.find(pricekey);
+    
+    if(statsitr != _stats.end()) {
+        _stats.modify(statsitr, _self, [&](auto &s) {
+            s.count += 1;
+        });
+    } else {
+        _stats.emplace(_self, [&](auto &s) {
+            s.pricekey = pricekey;
+            s.count = 1;
+        });
+    }
 
-    // Get the ramprice and calculate the amount of SYS to be locked
+    referrallogtable _log(_self, _self.value);
+    _log.emplace(_self, [&](auto &l) {
+        l.newaccount = newname;
+        l.referral = referral;
+    });
+
+    //Get the ramprice and calculate the amount of SYS to be locked
+
     asset ramprice = common::getRamCost(priceitr->rambytes);
-
     asset sys_stake_net, sys_stake_cpu;
     sys_stake_net.amount = priceitr->netamount.amount / priceitr->bwpricerate;
     sys_stake_cpu.amount = priceitr->cpuamount.amount / priceitr->bwpricerate;
@@ -58,7 +79,6 @@ ACTION oresystem::createoreacc(name creator,
     locksys.symbol = sys_symbol;
     locksys.amount = priceitr->createprice.amount - (sys_stake_net.amount + sys_stake_cpu.amount + ramprice.amount);
 
-    print("before transfer");
     action(
         permission_level{creator, "active"_n},
         "eosio.token"_n,

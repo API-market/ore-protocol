@@ -58,6 +58,14 @@
                 {
                     "name": "activekey",
                     "type": "public_key"
+                },
+                {
+                    "name": "pricekey",
+                    "type": "uint64"
+                },
+                {
+                    "name": "referral",
+                    "type": "name"
                 }
             ]
         },
@@ -114,6 +122,34 @@
             ]
         },
         {
+            "name": "reflog",
+            "base": "",
+            "fields": [
+                {
+                    "name": "referral",
+                    "type": "name"
+                },
+                {
+                    "name": "newaccount",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "refstats",
+            "base": "",
+            "fields": [
+                {
+                    "name": "pricekey",
+                    "type": "uint64"
+                },
+                {
+                    "name": "count",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
             "name": "sellram",
             "base": "",
             "fields": [
@@ -149,6 +185,10 @@
                 },
                 {
                     "name": "bwpricerate",
+                    "type": "uint64"
+                },
+                {
+                    "name": "pricekey",
                     "type": "uint64"
                 }
             ]
@@ -215,8 +255,22 @@
     ],
     "tables": [
         {
-            "name": "oreprice",
+            "name": "pricetable",
             "type": "oreprice",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "reflog",
+            "type": "reflog",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "refstats",
+            "type": "refstats",
             "index_type": "i64",
             "key_names": [],
             "key_types": []
