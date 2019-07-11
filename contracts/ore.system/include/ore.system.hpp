@@ -73,10 +73,10 @@ public:
 
    //possibly different accounts that has different uses
    static constexpr name token_account{"eosio.token"_n};
-   static constexpr name ore_system{"oresystem"_n};
-   static constexpr name ore_lock{"orelock"_n};
-   static constexpr name sys_lock{"syslock"_n};
-   static constexpr name sys_payer{"oresystem"_n};
+   static constexpr name ore_system{"system.ore"_n};
+   static constexpr name ore_lock{"lock.ore"_n};
+   static constexpr name sys_lock{"lock.ore"_n};
+   static constexpr name sys_payer{"system.ore"_n};
    static constexpr symbol ore_symbol = symbol(symbol_code("ORE"), 4);
    static constexpr symbol sys_symbol = symbol(symbol_code("SYS"), 4);
 };
