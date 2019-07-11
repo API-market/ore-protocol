@@ -10,12 +10,18 @@ cleos set contract oresystem ../contracts/build/ore.system/ ore.system.wasm ore.
 cleos set account permission producer1 active '{"threshold": 1,"keys": [{"key": "EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn","weight": 1}],"accounts": [{"permission":{"actor":"oresystem","permission":"eosio.code"},"weight":1}]}' owner -p producer1@owner
 cleos set account permission oresystem active '{"threshold": 1,"keys": [{"key": "EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn","weight": 1}],"accounts": [{"permission":{"actor":"oresystem","permission":"eosio.code"},"weight":1}]}' owner -p oresystem@owner
 
-cleos push action eosio.token issue '[ "producer1", "1000000000.0000 ORE", "memo" ]' -p eosio@active
-cleos push action eosio.token issue '[ "oresystem", "1000000000.0000 ORE", "memo" ]' -p eosio@active
-cleos push action eosio.token issue '[ "oresystem", "1000000000.0000 SYS", "memo" ]' -p eosio@active
+cleos push action eosio.token issue '[ "producer1", "10000000.0000 ORE", "memo" ]' -p eosio@active
+cleos push action eosio.token issue '[ "producer1", "10000000.0000 SYS", "memo" ]' -p eosio@active
+cleos push action eosio.token issue '[ "oresystem", "10000000.0000 ORE", "memo" ]' -p eosio@active
+cleos push action eosio.token issue '[ "oresystem", "10000000.0000 SYS", "memo" ]' -p eosio@active
+
 
 sleep 3s
-cleos push action oresystem setprice '[ "5.0000 ORE", 3584, "0.2000 ORE", "0.2000 ORE", 2, 1]' -p oresystem
+cleos push action oresystem setprice '[ "5.0000 ORE", 4075, "1.0000 ORE", "1.0000 ORE", 1]' -p oresystem
 
 sleep 3s
-cleos push action oresystem createoreacc '[ "producer1", "neworeacct11", "EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn", "EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn", 1, "oresystem"]' -p producer1
+cleos push action oresystem createoreacc '[ "producer1", "neworeacct11", "EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn", "EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn", 1, "producer1"]' -p producer1
+cleos push action oresystem createoreacc '[ "producer1", "neworeacct12", "EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn", "EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn", 1, "producer1"]' -p producer1
+cleos push action oresystem createoreacc '[ "producer1", "neworeacct13", "EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn", "EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn", 1, "producer1"]' -p producer1
+cleos push action oresystem createoreacc '[ "producer1", "neworeacct14", "EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn", "EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn", 1, "producer1"]' -p producer1
+cleos push action oresystem createoreacc '[ "producer1", "neworeacct15", "EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn", "EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn", 1, "producer1"]' -p producer1
