@@ -50,26 +50,28 @@ ACTION oresystem::createoreacc(name creator,
         t.pricekey = pricekey;
         t.createprice = priceitr->createprice;
     });
+    if(referral != name("")) {
+        referralstatstable _stats(_self, referral.value);
+        auto statsitr = _stats.find(pricekey);
+        
+        if(statsitr != _stats.end()) {
+            _stats.modify(statsitr, _self, [&](auto &s) {
+                s.count += 1;
+            });
+        } else {
+            _stats.emplace(_self, [&](auto &s) {
+                s.pricekey = pricekey;
+                s.count = 1;
+            });
+        }
 
-    referralstatstable _stats(_self, referral.value);
-    auto statsitr = _stats.find(pricekey);
-    
-    if(statsitr != _stats.end()) {
-        _stats.modify(statsitr, _self, [&](auto &s) {
-            s.count += 1;
-        });
-    } else {
-        _stats.emplace(_self, [&](auto &s) {
-            s.pricekey = pricekey;
-            s.count = 1;
+        referrallogtable _log(_self, _self.value);
+        _log.emplace(_self, [&](auto &l) {
+            l.newaccount = newname;
+            l.referral = referral;
         });
     }
-
-    referrallogtable _log(_self, _self.value);
-    _log.emplace(_self, [&](auto &l) {
-        l.newaccount = newname;
-        l.referral = referral;
-    });
+    
 
     //Get the ramprice and calculate the amount of SYS to be locked
 
