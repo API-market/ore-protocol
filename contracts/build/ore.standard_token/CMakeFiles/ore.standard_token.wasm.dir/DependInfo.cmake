@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/basar/Workspace/ore-protocol/contracts/ore.standard_token/src/ore.standard_token.cpp" "/Users/basar/Workspace/ore-protocol/contracts/build/ore.standard_token/CMakeFiles/ore.standard_token.wasm.dir/src/ore.standard_token.cpp.o"
+  "/Users/basarcancelebci/Work/API-market/ore-protocol/contracts/ore.standard_token/src/ore.standard_token.cpp" "/Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build/ore.standard_token/CMakeFiles/ore.standard_token.wasm.dir/src/ore.standard_token.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

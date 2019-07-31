@@ -4,6 +4,20 @@
     "types": [],
     "structs": [
         {
+            "name": "changetier",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "pricekey",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
             "name": "createoreacc",
             "base": "",
             "fields": [
@@ -129,6 +143,11 @@
         }
     ],
     "actions": [
+        {
+            "name": "changetier",
+            "type": "changetier",
+            "ricardian_contract": ""
+        },
         {
             "name": "createoreacc",
             "type": "createoreacc",

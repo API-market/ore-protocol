@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/Users/basar/Workspace/ore-protocol/contracts/ore.usage_log/src/ore.usage_log.cpp
+/Users/basarcancelebci/Work/API-market/ore-protocol/contracts/ore.usage_log/src/ore.usage_log.cpp
 eosiolib/eosio.hpp
 -
 eosiolib/asset.hpp

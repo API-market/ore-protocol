@@ -6,8 +6,6 @@
 
 #IncludeRegexTransform: 
 
-../ore.system/include/./accounts.h
-
 ../ore.system/include/accounts.h
 
 ../ore.system/include/common.h
@@ -34,9 +32,9 @@ publickey.h
 eosiolib/crypto.h
 -
 ./accounts.h
-../ore.system/include/./accounts.h
+../ore.system/include/accounts.h
 
-/Users/basar/Workspace/ore-protocol/contracts/ore.system/src/ore.system.cpp
+/Users/basarcancelebci/Work/API-market/ore-protocol/contracts/ore.system/src/ore.system.cpp
 ore.system.hpp
-/Users/basar/Workspace/ore-protocol/contracts/ore.system/src/ore.system.hpp
+/Users/basarcancelebci/Work/API-market/ore-protocol/contracts/ore.system/src/ore.system.hpp
 

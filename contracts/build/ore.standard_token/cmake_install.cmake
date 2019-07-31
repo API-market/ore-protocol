@@ -1,4 +1,4 @@
-# Install script for directory: /Users/basar/Workspace/ore-protocol/contracts/ore.standard_token
+# Install script for directory: /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/ore.standard_token
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

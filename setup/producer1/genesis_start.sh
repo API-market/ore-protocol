@@ -1,15 +1,15 @@
 #!/bin/bash
 DATADIR="./blockchain"
 CURDIRNAME=${PWD##*/}
-
+nodeos=/Users/basarcancelebci/eosio/1.8/bin/nodeos
 if [ ! -d $DATADIR ]; then
   mkdir -p $DATADIR;
 fi
 
-nodeos \
+$nodeos \
 --genesis-json $DATADIR"/../../genesis.json" \
 --signature-provider EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn=KEY:5HyUCyaSAHM9FSomwidgDVcoeBFVs6d3EKF5VZy1fPTFGJXFAZN \
---plugin eosio::producer_plugin \
+--plugin eosio::producer_api_plugin \
 --plugin eosio::chain_api_plugin \
 --plugin eosio::http_plugin \
 --plugin eosio::history_api_plugin \

@@ -50,4 +50,46 @@ namespace common {
        uint64_t quote = ramData->quote.balance.amount;
        return asset((((double)quote / base))*ram_bytes, coreSymbol);
     }
+
+    struct user_resources {
+      name          owner;
+      asset         net_weight;
+      asset         cpu_weight;
+      int64_t       ram_bytes = 0;
+
+      bool is_empty()const { return net_weight.amount == 0 && cpu_weight.amount == 0 && ram_bytes == 0; }
+      uint64_t primary_key()const { return owner.value; }
+    };
+
+    typedef eosio::multi_index< "userres"_n, user_resources > user_resources_table;
+
+    asset getAccountCpu(name account){
+       user_resources_table userres(name("eosio"), account.value);
+       auto res_itr = userres.find( account.value );
+       return res_itr->cpu_weight;
+    }
+    asset getAccountNet(name account){
+       user_resources_table userres(name("eosio"), account.value);
+       auto res_itr = userres.find( account.value );
+       return res_itr->net_weight;
+    }
+    uint64_t getAccountRamBytes(name account){
+       user_resources_table userres(name("eosio"), account.value);
+       auto res_itr = userres.find( account.value );
+       return res_itr->ram_bytes;
+    }
+
+    struct account {
+        asset    balance;
+
+        uint64_t primary_key()const { return balance.symbol.code().raw(); }
+    };
+    typedef eosio::multi_index< "accounts"_n, account > balance_table;
+
+    asset getSYSBalance(name account){
+       balance_table _balance(name("eosio.token"), account.value);
+       auto balance_itr = _balance.find(core_symbol.code().raw());
+       return balance_itr->balance;
+    }
+
 };

@@ -64,6 +64,7 @@ public:
                         public_key &activekey,
                         uint64_t pricekey,
                         name referral );
+   ACTION changetier(name account, uint64_t pricekey);
 
    orepricetable _prices;
 

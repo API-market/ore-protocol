@@ -1,4 +1,4 @@
-# Install script for directory: /Users/basar/Workspace/ore-protocol/contracts
+# Install script for directory: /Users/basarcancelebci/Work/API-market/ore-protocol/contracts
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,11 +34,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/basar/Workspace/ore-protocol/contracts/build/ore.system/cmake_install.cmake")
-  include("/Users/basar/Workspace/ore-protocol/contracts/build/ore.standard_token/cmake_install.cmake")
-  include("/Users/basar/Workspace/ore-protocol/contracts/build/ore.rights_registry/cmake_install.cmake")
-  include("/Users/basar/Workspace/ore-protocol/contracts/build/ore.instrument/cmake_install.cmake")
-  include("/Users/basar/Workspace/ore-protocol/contracts/build/ore.usage_log/cmake_install.cmake")
+  include("/Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build/ore.system/cmake_install.cmake")
+  include("/Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build/ore.standard_token/cmake_install.cmake")
+  include("/Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build/ore.rights_registry/cmake_install.cmake")
+  include("/Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build/ore.instrument/cmake_install.cmake")
+  include("/Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build/ore.usage_log/cmake_install.cmake")
 
 endif()
 
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/basar/Workspace/ore-protocol/contracts/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

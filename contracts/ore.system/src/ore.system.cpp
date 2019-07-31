@@ -129,6 +129,134 @@ ACTION oresystem::createoreacc(name creator,
         make_tuple(sys_payer, newname, sys_stake_net, sys_stake_cpu, false))
         .send();
 }
+
+ACTION oresystem::changetier(name account, uint64_t pricekey)
+{
+    require_auth(account);
+
+    auto newPriceItr = _prices.find(pricekey);
+
+    asset currentCpu = getAccountCpu(account);
+    asset currentNet = getAccountNet(account);
+    uint64_t currentRambytes = getAccountRamBytes(account);
+
+    asset cpuDelta, netDelta;
+    uint64_t ramDelta;
+
+    if(newPriceItr->cpuamount.amount > currentCpu.amount) {
+        cpuDelta.amount = newPriceItr->cpuamount.amount - currentCpu.amount;
+        cpuDelta.symbol = core_symbol;
+        action(
+        permission_level{sys_payer, "active"_n},
+        "eosio"_n,
+        name("delegatebw"),
+        make_tuple(sys_payer, account, asset(0, core_symbol), cpuDelta, false))
+        .send();
+    } else if (newPriceItr->cpuamount.amount < currentCpu.amount) {
+        cpuDelta.amount = currentCpu.amount - newPriceItr->cpuamount.amount;
+        cpuDelta.symbol = core_symbol;
+        action(
+        permission_level{sys_payer, "active"_n},
+        "eosio"_n,
+        name("undelegatebw"),
+        make_tuple(sys_payer, account, asset(0, core_symbol), cpuDelta))
+        .send();
+    }
+
+    if(newPriceItr->netamount.amount > currentNet.amount) {
+        netDelta.amount = newPriceItr->netamount.amount - currentNet.amount;
+        netDelta.symbol = core_symbol;
+        action(
+        permission_level{sys_payer, "active"_n},
+        "eosio"_n,
+        name("delegatebw"),
+        make_tuple(sys_payer, account, asset(0, core_symbol), netDelta, false))
+        .send();
+    } else if (newPriceItr->netamount.amount < currentCpu.amount) {
+        netDelta.amount = currentNet.amount - newPriceItr->netamount.amount;
+        netDelta.symbol = core_symbol;
+        action(
+        permission_level{sys_payer, "active"_n},
+        "eosio"_n,
+        name("undelegatebw"),
+        make_tuple(sys_payer, account, asset(0, core_symbol), netDelta))
+        .send();
+    }
+
+    if(newPriceItr->rambytes > currentRambytes) {
+        ramDelta = newPriceItr->rambytes - currentRambytes;
+        print(ramDelta);
+        action(
+            permission_level{sys_payer, "active"_n},
+            "eosio"_n,
+            name("buyrambytes"),
+            make_tuple(sys_payer, account, ramDelta))
+            .send();
+    } else if (newPriceItr->rambytes < currentRambytes) {
+        ramDelta = currentRambytes - newPriceItr->rambytes;
+        action(
+            permission_level{account, "active"_n},
+            "eosio"_n,
+            name("sellram"),
+            make_tuple(account, ramDelta))
+            .send();
+    }
+
+    asset orePriceDelta;
+
+    tierinfotable _tiers(_self, account.value);
+    auto oldTierItr = _tiers.begin();
+    if(_tiers.begin() == _tiers.end()) {
+        print("no previous tier found");
+        orePriceDelta = newPriceItr->createprice;
+    } else {
+        if(newPriceItr->createprice > oldTierItr->createprice) {
+            orePriceDelta = newPriceItr->createprice - oldTierItr->createprice;
+            action(
+                permission_level{account, "active"_n},
+                "eosio.token"_n,
+                "transfer"_n,
+                make_tuple(account, ore_lock, orePriceDelta, std::string("ore lock")))
+                .send();
+            action(
+                permission_level{sys_payer, "active"_n},
+                "eosio.token"_n,
+                "transfer"_n,
+                make_tuple(sys_payer, sys_lock, asset(orePriceDelta.amount, core_symbol), std::string("ore savings")))
+                .send();
+        } else if (newPriceItr->createprice < oldTierItr->createprice) {
+            orePriceDelta = oldTierItr->createprice - newPriceItr->createprice;
+            action(
+                permission_level{ore_lock, "active"_n},
+                "eosio.token"_n,
+                "transfer"_n,
+                make_tuple(ore_lock, account, orePriceDelta, std::string("ore released from lock")))
+                .send();
+            action(
+                permission_level{sys_lock, "active"_n},
+                "eosio.token"_n,
+                "transfer"_n,
+                make_tuple(sys_lock, sys_payer, asset(orePriceDelta.amount, common::core_symbol), std::string("ore savings")))
+                .send();
+        }
+    }
+    _tiers.erase(oldTierItr);
+    _tiers.emplace(sys_payer, [&](auto &t) {
+            t.pricekey = pricekey;
+            t.createprice = newPriceItr->createprice;
+    });
+
+    asset depleteSYSAmount = getSYSBalance(account);
+    if(depleteSYSAmount.amount > 0) {
+        action(
+        permission_level{ore_system, "active"_n},
+        "eosio.token"_n,
+        "transfer"_n,
+        make_tuple(account, sys_payer, depleteSYSAmount, std::string("remaining SYS will be taken from account")))
+        .send();
+    }
+    print("end");
+}
 // namespace oresystem
 
-EOSIO_DISPATCH(oresystem, (setprice)(createoreacc))
+EOSIO_DISPATCH(oresystem, (setprice)(createoreacc)(changetier))
