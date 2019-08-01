@@ -38,11 +38,10 @@
 .env
 .vscode
 
-contracts/build/*
+contracts/build/
 
 scripts/scriptout/*
 scripts/importkeys_prod.sh
 scripts/importkeys_staging.sh
 staging_keys
 
-setup/
