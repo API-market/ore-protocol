@@ -21,18 +21,12 @@ eosiolib/asset.hpp
 -
 eosiolib/ignore.hpp
 -
+eosiolib/transaction.hpp
+../ore.system/include/eosiolib/transaction.hpp
 accounts.h
 ../ore.system/include/accounts.h
 common.h
 ../ore.system/include/common.h
-publickey.h
-../ore.system/include/publickey.h
-
-../ore.system/include/publickey.h
-eosiolib/crypto.h
--
-./accounts.h
-../ore.system/include/accounts.h
 
 /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/ore.system/src/ore.system.cpp
 ore.system.hpp

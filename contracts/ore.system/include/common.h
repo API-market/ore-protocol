@@ -45,8 +45,6 @@ namespace common {
        eosio_assert(ramData != ramInfo.end(), "Could not get RAM info");
 
        uint64_t base = ramData->base.balance.amount;
-       print("\nbase\n");
-       print(std::to_string(base));
        uint64_t quote = ramData->quote.balance.amount;
        return asset((((double)quote / base))*ram_bytes, coreSymbol);
     }
@@ -61,21 +59,21 @@ namespace common {
       uint64_t primary_key()const { return owner.value; }
     };
 
-    typedef eosio::multi_index< "userres"_n, user_resources > user_resources_table;
+    typedef eosio::multi_index<"userres"_n, user_resources > user_resources_table;
 
     asset getAccountCpu(name account){
-       user_resources_table userres(name("eosio"), account.value);
-       auto res_itr = userres.find( account.value );
+       user_resources_table _userres(name("eosio"), account.value);
+       auto res_itr = _userres.find( account.value );
        return res_itr->cpu_weight;
     }
     asset getAccountNet(name account){
-       user_resources_table userres(name("eosio"), account.value);
-       auto res_itr = userres.find( account.value );
+       user_resources_table _userres(name("eosio"), account.value);
+       auto res_itr = _userres.find( account.value );
        return res_itr->net_weight;
     }
     uint64_t getAccountRamBytes(name account){
-       user_resources_table userres(name("eosio"), account.value);
-       auto res_itr = userres.find( account.value );
+       user_resources_table _userres(name("eosio"), account.value);
+       auto res_itr = _userres.find( account.value );
        return res_itr->ram_bytes;
     }
 
@@ -89,7 +87,11 @@ namespace common {
     asset getSYSBalance(name account){
        balance_table _balance(name("eosio.token"), account.value);
        auto balance_itr = _balance.find(core_symbol.code().raw());
-       return balance_itr->balance;
+       if(balance_itr == _balance.end()){
+          return asset(0, core_symbol);
+       } else {
+          return balance_itr->balance;
+       }
     }
 
 };

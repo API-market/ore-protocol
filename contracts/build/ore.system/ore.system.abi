@@ -8,6 +8,10 @@
             "base": "",
             "fields": [
                 {
+                    "name": "payer",
+                    "type": "name"
+                },
+                {
                     "name": "account",
                     "type": "name"
                 },
@@ -43,6 +47,16 @@
                 },
                 {
                     "name": "referral",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "depletesys",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
                     "type": "name"
                 }
             ]
@@ -151,6 +165,11 @@
         {
             "name": "createoreacc",
             "type": "createoreacc",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "depletesys",
+            "type": "depletesys",
             "ricardian_contract": ""
         },
         {

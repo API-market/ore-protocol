@@ -4,6 +4,5 @@
 ore.system/CMakeFiles/ore.system.wasm.dir/src/ore.system.cpp.o: ../ore.system/include/accounts.h
 ore.system/CMakeFiles/ore.system.wasm.dir/src/ore.system.cpp.o: ../ore.system/include/common.h
 ore.system/CMakeFiles/ore.system.wasm.dir/src/ore.system.cpp.o: ../ore.system/include/ore.system.hpp
-ore.system/CMakeFiles/ore.system.wasm.dir/src/ore.system.cpp.o: ../ore.system/include/publickey.h
 ore.system/CMakeFiles/ore.system.wasm.dir/src/ore.system.cpp.o: ../ore.system/src/ore.system.cpp
 

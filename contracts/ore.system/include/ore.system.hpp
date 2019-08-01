@@ -1,9 +1,9 @@
 #include <eosiolib/eosio.hpp>
 #include <eosiolib/asset.hpp>
 #include <eosiolib/ignore.hpp>
+#include "eosiolib/transaction.hpp"
 #include "accounts.h"
 #include "common.h"
-#include "publickey.h"
 using namespace eosio;
 using namespace std;
 using namespace accounts;
@@ -64,7 +64,8 @@ public:
                         public_key &activekey,
                         uint64_t pricekey,
                         name referral );
-   ACTION changetier(name account, uint64_t pricekey);
+   ACTION changetier(name payer, name account, uint64_t pricekey);
+   ACTION depletesys(name account);
 
    orepricetable _prices;
 

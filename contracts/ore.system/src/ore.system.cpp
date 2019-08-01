@@ -130,9 +130,9 @@ ACTION oresystem::createoreacc(name creator,
         .send();
 }
 
-ACTION oresystem::changetier(name account, uint64_t pricekey)
+ACTION oresystem::changetier(name payer, name account, uint64_t pricekey)
 {
-    require_auth(account);
+    require_auth(sys_payer);
 
     auto newPriceItr = _prices.find(pricekey);
 
@@ -162,7 +162,7 @@ ACTION oresystem::changetier(name account, uint64_t pricekey)
         make_tuple(sys_payer, account, asset(0, core_symbol), cpuDelta))
         .send();
     }
-
+    print("before netamount");
     if(newPriceItr->netamount.amount > currentNet.amount) {
         netDelta.amount = newPriceItr->netamount.amount - currentNet.amount;
         netDelta.symbol = core_symbol;
@@ -170,7 +170,7 @@ ACTION oresystem::changetier(name account, uint64_t pricekey)
         permission_level{sys_payer, "active"_n},
         "eosio"_n,
         name("delegatebw"),
-        make_tuple(sys_payer, account, asset(0, core_symbol), netDelta, false))
+        make_tuple(sys_payer, account, netDelta, asset(0, core_symbol), false))
         .send();
     } else if (newPriceItr->netamount.amount < currentCpu.amount) {
         netDelta.amount = currentNet.amount - newPriceItr->netamount.amount;
@@ -179,13 +179,12 @@ ACTION oresystem::changetier(name account, uint64_t pricekey)
         permission_level{sys_payer, "active"_n},
         "eosio"_n,
         name("undelegatebw"),
-        make_tuple(sys_payer, account, asset(0, core_symbol), netDelta))
+        make_tuple(sys_payer, account, netDelta, asset(0, core_symbol)))
         .send();
     }
-
+    print("before ramamount");
     if(newPriceItr->rambytes > currentRambytes) {
         ramDelta = newPriceItr->rambytes - currentRambytes;
-        print(ramDelta);
         action(
             permission_level{sys_payer, "active"_n},
             "eosio"_n,
@@ -203,11 +202,9 @@ ACTION oresystem::changetier(name account, uint64_t pricekey)
     }
 
     asset orePriceDelta;
-
     tierinfotable _tiers(_self, account.value);
     auto oldTierItr = _tiers.begin();
     if(_tiers.begin() == _tiers.end()) {
-        print("no previous tier found");
         orePriceDelta = newPriceItr->createprice;
     } else {
         if(newPriceItr->createprice > oldTierItr->createprice) {
@@ -216,7 +213,7 @@ ACTION oresystem::changetier(name account, uint64_t pricekey)
                 permission_level{account, "active"_n},
                 "eosio.token"_n,
                 "transfer"_n,
-                make_tuple(account, ore_lock, orePriceDelta, std::string("ore lock")))
+                make_tuple(payer, ore_lock, orePriceDelta, std::string("ore lock")))
                 .send();
             action(
                 permission_level{sys_payer, "active"_n},
@@ -239,24 +236,36 @@ ACTION oresystem::changetier(name account, uint64_t pricekey)
                 make_tuple(sys_lock, sys_payer, asset(orePriceDelta.amount, common::core_symbol), std::string("ore savings")))
                 .send();
         }
+        _tiers.erase(oldTierItr);
     }
-    _tiers.erase(oldTierItr);
+    
     _tiers.emplace(sys_payer, [&](auto &t) {
             t.pricekey = pricekey;
             t.createprice = newPriceItr->createprice;
     });
 
+    transaction deferred;
+    
+    deferred.actions.emplace_back(
+      permission_level{get_self(),"active"_n},
+      get_self(), "depletesys"_n, 
+      std::make_tuple(account)
+    );
+    deferred.send(account.value, get_self());
+}
+
+ACTION oresystem::depletesys(name account)
+{
     asset depleteSYSAmount = getSYSBalance(account);
     if(depleteSYSAmount.amount > 0) {
         action(
-        permission_level{ore_system, "active"_n},
+        permission_level{account, "active"_n},
         "eosio.token"_n,
         "transfer"_n,
-        make_tuple(account, sys_payer, depleteSYSAmount, std::string("remaining SYS will be taken from account")))
-        .send();
+        make_tuple(account, sys_payer, depleteSYSAmount, std::string("remaining SYS will be taken from account"))
+        ).send();
     }
-    print("end");
 }
 // namespace oresystem
 
-EOSIO_DISPATCH(oresystem, (setprice)(createoreacc)(changetier))
+EOSIO_DISPATCH(oresystem, (setprice)(createoreacc)(changetier)(depletesys))
