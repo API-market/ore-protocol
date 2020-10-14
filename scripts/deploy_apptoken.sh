@@ -11,4 +11,8 @@ $cleos set contract apptoken.ore $ore_contracts/build/ore.apptoken/ ore.apptoken
 # sleep 3s
 $cleos set contract system.ore $ore_contracts/build/ore.system/ ore.system.wasm ore.system.abi
 
-$cleos push action system.ore tokenprice '["10.0000 ORE", "apptoken"]' -p producer1@active
+$cleos push action system.ore tokenprice '["10.0000 ORE", "apptoken"]' -p system.ore
+
+#cleos set account permission eleveneleven active '{"threshold": 1,"keys": [{"key": "....","weight": 1}],"accounts": [{"permission":{"actor":"system.ore","permission":"eosio.code"},"weight":1}]}' owner -p eleveneleven@owner
+#cleos push action system.ore createtoken '["eleveneleven", "10000000000.0000 DMILES"]' -p eleveneleven
+#cleos push action apptoken.ore issue '["eleveneleven", "1000.0000 DMILES", ""]' -p eleveneleven
