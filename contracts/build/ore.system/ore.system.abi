@@ -52,6 +52,20 @@
             ]
         },
         {
+            "name": "createtoken",
+            "base": "",
+            "fields": [
+                {
+                    "name": "payer",
+                    "type": "name"
+                },
+                {
+                    "name": "maximum_supply",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
             "name": "oreprice",
             "base": "",
             "fields": [
@@ -144,6 +158,20 @@
                     "type": "asset"
                 }
             ]
+        },
+        {
+            "name": "tokenprice",
+            "base": "",
+            "fields": [
+                {
+                    "name": "tokenprice",
+                    "type": "asset"
+                },
+                {
+                    "name": "tokenkey",
+                    "type": "name"
+                }
+            ]
         }
     ],
     "actions": [
@@ -158,8 +186,18 @@
             "ricardian_contract": ""
         },
         {
+            "name": "createtoken",
+            "type": "createtoken",
+            "ricardian_contract": ""
+        },
+        {
             "name": "setprice",
             "type": "setprice",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "tokenprice",
+            "type": "tokenprice",
             "ricardian_contract": ""
         }
     ],

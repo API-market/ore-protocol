@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build/CMakeFiles /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build/CMakeFiles/progress.marks
-	$(MAKE) -f CMakeFiles/Makefile2 all
+	cd /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build/CMakeFiles /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build/ore.apptoken/CMakeFiles/progress.marks
+	cd /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build && $(MAKE) -f CMakeFiles/Makefile2 ore.apptoken/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) -f CMakeFiles/Makefile2 clean
+	cd /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build && $(MAKE) -f CMakeFiles/Makefile2 ore.apptoken/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,44 +97,60 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build && $(MAKE) -f CMakeFiles/Makefile2 ore.apptoken/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build && $(MAKE) -f CMakeFiles/Makefile2 ore.apptoken/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named ore.system.wasm
+# Convenience name for target.
+ore.apptoken/CMakeFiles/ore.apptoken.wasm.dir/rule:
+	cd /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build && $(MAKE) -f CMakeFiles/Makefile2 ore.apptoken/CMakeFiles/ore.apptoken.wasm.dir/rule
+.PHONY : ore.apptoken/CMakeFiles/ore.apptoken.wasm.dir/rule
 
-# Build rule for target.
-ore.system.wasm: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ore.system.wasm
-.PHONY : ore.system.wasm
+# Convenience name for target.
+ore.apptoken.wasm: ore.apptoken/CMakeFiles/ore.apptoken.wasm.dir/rule
 
-# fast build rule for target.
-ore.system.wasm/fast:
-	$(MAKE) -f ore.system/CMakeFiles/ore.system.wasm.dir/build.make ore.system/CMakeFiles/ore.system.wasm.dir/build
-.PHONY : ore.system.wasm/fast
-
-#=============================================================================
-# Target rules for targets named ore.apptoken.wasm
-
-# Build rule for target.
-ore.apptoken.wasm: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ore.apptoken.wasm
 .PHONY : ore.apptoken.wasm
 
 # fast build rule for target.
 ore.apptoken.wasm/fast:
-	$(MAKE) -f ore.apptoken/CMakeFiles/ore.apptoken.wasm.dir/build.make ore.apptoken/CMakeFiles/ore.apptoken.wasm.dir/build
+	cd /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build && $(MAKE) -f ore.apptoken/CMakeFiles/ore.apptoken.wasm.dir/build.make ore.apptoken/CMakeFiles/ore.apptoken.wasm.dir/build
 .PHONY : ore.apptoken.wasm/fast
+
+src/ore.apptoken.o: src/ore.apptoken.cpp.o
+
+.PHONY : src/ore.apptoken.o
+
+# target to build an object file
+src/ore.apptoken.cpp.o:
+	cd /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build && $(MAKE) -f ore.apptoken/CMakeFiles/ore.apptoken.wasm.dir/build.make ore.apptoken/CMakeFiles/ore.apptoken.wasm.dir/src/ore.apptoken.cpp.o
+.PHONY : src/ore.apptoken.cpp.o
+
+src/ore.apptoken.i: src/ore.apptoken.cpp.i
+
+.PHONY : src/ore.apptoken.i
+
+# target to preprocess a source file
+src/ore.apptoken.cpp.i:
+	cd /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build && $(MAKE) -f ore.apptoken/CMakeFiles/ore.apptoken.wasm.dir/build.make ore.apptoken/CMakeFiles/ore.apptoken.wasm.dir/src/ore.apptoken.cpp.i
+.PHONY : src/ore.apptoken.cpp.i
+
+src/ore.apptoken.s: src/ore.apptoken.cpp.s
+
+.PHONY : src/ore.apptoken.s
+
+# target to generate assembly for a file
+src/ore.apptoken.cpp.s:
+	cd /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build && $(MAKE) -f ore.apptoken/CMakeFiles/ore.apptoken.wasm.dir/build.make ore.apptoken/CMakeFiles/ore.apptoken.wasm.dir/src/ore.apptoken.cpp.s
+.PHONY : src/ore.apptoken.cpp.s
 
 # Help Target
 help:
@@ -144,8 +160,10 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... ore.system.wasm"
 	@echo "... ore.apptoken.wasm"
+	@echo "... src/ore.apptoken.o"
+	@echo "... src/ore.apptoken.i"
+	@echo "... src/ore.apptoken.s"
 .PHONY : help
 
 
@@ -157,6 +175,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

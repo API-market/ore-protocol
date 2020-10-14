@@ -34,10 +34,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/Cellar/cmake/3.15.1/bin/cmake
+CMAKE_COMMAND = /usr/local/Cellar/cmake/3.15.5/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/Cellar/cmake/3.15.1/bin/cmake -E remove -f
+RM = /usr/local/Cellar/cmake/3.15.5/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -60,15 +60,15 @@ include ore.system/CMakeFiles/ore.system.wasm.dir/flags.make
 ore.system/CMakeFiles/ore.system.wasm.dir/src/ore.system.cpp.o: ore.system/CMakeFiles/ore.system.wasm.dir/flags.make
 ore.system/CMakeFiles/ore.system.wasm.dir/src/ore.system.cpp.o: ../ore.system/src/ore.system.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object ore.system/CMakeFiles/ore.system.wasm.dir/src/ore.system.cpp.o"
-	cd /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build/ore.system && //usr/local/bin/eosio-cpp  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ore.system.wasm.dir/src/ore.system.cpp.o -c /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/ore.system/src/ore.system.cpp
+	cd /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build/ore.system && /Users/basarcancelebci/Work/EOSIO/eosio.cdt/build/bin/eosio-cpp  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ore.system.wasm.dir/src/ore.system.cpp.o -c /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/ore.system/src/ore.system.cpp
 
 ore.system/CMakeFiles/ore.system.wasm.dir/src/ore.system.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ore.system.wasm.dir/src/ore.system.cpp.i"
-	cd /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build/ore.system && //usr/local/bin/eosio-cpp $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/ore.system/src/ore.system.cpp > CMakeFiles/ore.system.wasm.dir/src/ore.system.cpp.i
+	cd /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build/ore.system && /Users/basarcancelebci/Work/EOSIO/eosio.cdt/build/bin/eosio-cpp $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/ore.system/src/ore.system.cpp > CMakeFiles/ore.system.wasm.dir/src/ore.system.cpp.i
 
 ore.system/CMakeFiles/ore.system.wasm.dir/src/ore.system.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ore.system.wasm.dir/src/ore.system.cpp.s"
-	cd /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build/ore.system && //usr/local/bin/eosio-cpp $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/ore.system/src/ore.system.cpp -o CMakeFiles/ore.system.wasm.dir/src/ore.system.cpp.s
+	cd /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/build/ore.system && /Users/basarcancelebci/Work/EOSIO/eosio.cdt/build/bin/eosio-cpp $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/basarcancelebci/Work/API-market/ore-protocol/contracts/ore.system/src/ore.system.cpp -o CMakeFiles/ore.system.wasm.dir/src/ore.system.cpp.s
 
 # Object files for target ore.system.wasm
 ore_system_wasm_OBJECTS = \

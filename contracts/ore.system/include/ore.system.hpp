@@ -1,7 +1,7 @@
-#include <eosiolib/eosio.hpp>
-#include <eosiolib/asset.hpp>
-#include <eosiolib/ignore.hpp>
-#include "eosiolib/transaction.hpp"
+#include <eosio/eosio.hpp>
+#include <eosio/asset.hpp>
+#include <eosio/ignore.hpp>
+#include "eosio/transaction.hpp"
 #include "accounts.h"
 #include "common.h"
 using namespace eosio;
@@ -65,6 +65,8 @@ public:
                         uint64_t pricekey,
                         name referral );
    ACTION chgacctier(name payer, name account, uint64_t pricekey);
+   ACTION createtoken(const name& payer, const asset& maximum_supply);
+   ACTION tokenprice(asset tokenprice, name tokenkey);
 
    orepricetable _prices;
 
