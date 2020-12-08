@@ -37,11 +37,14 @@ jobs:
           name: run tests
           command: |
             contracts/build.sh
-            tests/genesis/genesis_start.sh
-            tests/producer1/genesis_start.sh
-            tests/1.all_start.sh
-            tests/setupProduction.sh
-            tests/updateProduction.sh
+            cd tests/genesis
+            ./genesis_start.sh
+            cd ../producer1/
+            ./genesis_start.sh
+            cd ../
+            ./1.all_start.sh
+            ./setupProduction.sh
+            ./updateProduction.sh
 
       - store_artifacts:
           path: test-reports
