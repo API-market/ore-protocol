@@ -12,6 +12,7 @@ jobs:
       - image: bcelebci/ore-protocol:tokenupdate
         environment:
           PIPENV_VENV_IN_PROJECT: true
+        
 
     steps:
       - checkout

@@ -1,6 +1,6 @@
 #!/bin/bash
 DATADIR="./blockchain"
-nodeos=/Users/basarcancelebci/eosio/1.8/bin/nodeos
+nodeos=nodeos
 
 if [ ! -d $DATADIR ]; then
   mkdir -p $DATADIR;

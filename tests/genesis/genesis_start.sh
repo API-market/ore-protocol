@@ -1,6 +1,6 @@
 #!/bin/bash
 DATADIR="./blockchain"
-nodeos=/usr/local/bin/nodeos
+nodeos=nodeos
 
 
 if [ ! -d $DATADIR ]; then

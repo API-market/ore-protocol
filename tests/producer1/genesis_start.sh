@@ -1,7 +1,7 @@
 #!/bin/bash
 DATADIR="./blockchain"
 CURDIRNAME=${PWD##*/}
-nodeos=/usr/local/bin/nodeos
+nodeos=nodeos
 if [ ! -d $DATADIR ]; then
   mkdir -p $DATADIR;
 fi
