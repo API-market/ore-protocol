@@ -35,7 +35,8 @@ jobs:
       - run:
           name: run tests
           command: |
-            tests/test.sh
+            contracts/build.sh
+            tests/prepare_test.sh
 
       - store_artifacts:
           path: test-reports

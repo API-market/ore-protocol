@@ -1,19 +1,17 @@
 #!/bin/bash
 
-cd ~/ore-protocol/contracts
+eosio_accounts_pubKey="EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV"
 
-cd ore.instrument && mkdir build
-cp ~/ore-protocol/contracts/build/ore.instrument/ore.instrument.wasm build/
-cp ~/ore-protocol/contracts/build/ore.instrument/ore.instrument.abi build/
+ore_accounts_pubKey="EOS7i6tByRWk9LDVWzyUfLfqn6JpRveTuabjd57u3B1f64zHTh3SZ"
 
-cd ../ore.rights_registry && mkdir build
-cp ~/ore-protocol/contracts/build/ore.rights_registry/ore.rights_registry.wasm build/
-cp ~/ore-protocol/contracts/build/ore.rights_registry/ore.rights_registry.abi build/
-
-cd ../ore.usage_log && mkdir build
-cp ~/ore-protocol/contracts/build/ore.usage_log/ore.usage_log.wasm build/
-cp ~/ore-protocol/contracts/build/ore.usage_log/ore.usage_log.abi build/
-
-# cd ../ore.standard_token && mkdir build
-# cp ~/ore-protocol/contracts/build/ore.standard_token/ore.standard_token.wasm build/
-# cp ~/ore-protocol/contracts/build/ore.standard_token/ore.standard_token.abi build/
+docker exec -it ore-main cleos --url http://127.0.0.1:8888 --wallet-url http://ore-wallet:8901 create account eosio eosio.bpay $eosio_accounts_pubKey
+docker exec -it ore-main cleos --url http://127.0.0.1:8888 --wallet-url http://ore-wallet:8901 create account eosio eosio.msig $eosio_accounts_pubKey
+docker exec -it ore-main cleos --url http://127.0.0.1:8888 --wallet-url http://ore-wallet:8901 create account eosio eosio.names $eosio_accounts_pubKey
+docker exec -it ore-main cleos --url http://127.0.0.1:8888 --wallet-url http://ore-wallet:8901 create account eosio eosio.ram $eosio_accounts_pubKey
+docker exec -it ore-main cleos --url http://127.0.0.1:8888 --wallet-url http://ore-wallet:8901 create account eosio eosio.ramfee $eosio_accounts_pubKey
+docker exec -it ore-main cleos --url http://127.0.0.1:8888 --wallet-url http://ore-wallet:8901 create account eosio eosio.saving $eosio_accounts_pubKey
+docker exec -it ore-main cleos --url http://127.0.0.1:8888 --wallet-url http://ore-wallet:8901 create account eosio eosio.stake $eosio_accounts_pubKey
+docker exec -it ore-main cleos --url http://127.0.0.1:8888 --wallet-url http://ore-wallet:8901 create account eosio eosio.token $eosio_accounts_pubKey
+docker exec -it ore-main cleos --url http://127.0.0.1:8888 --wallet-url http://ore-wallet:8901 create account eosio eosio.vpay $eosio_accounts_pubKey
+docker exec -it ore-main cleos --url http://127.0.0.1:8888 --wallet-url http://ore-wallet:8901 create account eosio eosio.rex $eosio_accounts_pubKey
+docker exec -it ore-main cleos --url http://127.0.0.1:8888 --wallet-url http://ore-wallet:8901 create account eosio eosio.wrap $eosio_accounts_pubKey
