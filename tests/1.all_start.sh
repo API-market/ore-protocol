@@ -1,11 +1,5 @@
 #!/bin/bash
 
-cd /root/ore-protocol/tests/genesis
-./genesis_start.sh
-
-cd ../producer1
-./genesis_start.sh
-
 cleos wallet create -n oretest -f ~/walletpw.txt
 
 cleos wallet import -n oretest --private-key 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3
