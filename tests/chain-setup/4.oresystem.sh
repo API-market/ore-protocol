@@ -11,7 +11,7 @@ $cleos system newaccount ore --transfer system.ore EOS6H2tjbrS6zm8d3tX6yeHorEoih
 $cleos system newaccount ore --transfer lock.ore EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn --stake-net "10000.0000 SYS" --stake-cpu "10000.0000 SYS" --buy-ram-kbytes 8192 -p ore
 
 # sleep 3s
-$cleos set contract system.ore $ore_contracts/build/ore.system/ ore.system.wasm ore.system.abi
+$cleos set contract system.ore $ore_contracts/ore.system/ ore.system.wasm ore.system.abi
 
 $cleos set account permission system.ore active '{"threshold": 1,"keys": [{"key": "EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn","weight": 1}],"accounts": [{"permission":{"actor":"system.ore","permission":"eosio.code"},"weight":1}]}' owner -p system.ore@owner
 $cleos set account permission lock.ore active '{"threshold": 1,"keys": [{"key": "EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn","weight": 1}],"accounts": [{"permission":{"actor":"system.ore","permission":"eosio.code"},"weight":1}]}' owner -p lock.ore@owner

@@ -25,25 +25,25 @@ $cleos create account eosio eosio.wrap EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRH
 
 
 #sleep 5s
-$cleos set contract eosio $eosio_contracts/build/eosio.bios/
+$cleos set contract eosio $eosio_contracts/eosio.bios/
 
 sleep 1s
-$cleos set contract eosio.token $eosio_contracts/build/eosio.token/
+$cleos set contract eosio.token $eosio_contracts/eosio.token/
 
 sleep 1s
-$cleos set contract eosio.msig $eosio_contracts/build/eosio.msig/
+$cleos set contract eosio.msig $eosio_contracts/eosio.msig/
 
 sleep 1s
-$cleos set contract eosio.wrap $eosio_contracts/build/eosio.wrap/
+$cleos set contract eosio.wrap $eosio_contracts/eosio.wrap/
 
 curl -X POST http://127.0.0.1:8888/v1/producer/schedule_protocol_feature_activations -d '{"protocol_features_to_activate": ["0ec7e080177b2c02b278d5088611686b49d739925a92d9bfcacd7fc6b74053bd"]}' | jq
 
 
 
 sleep 3s
-$cleos set contract eosio $eosio_contracts/build/eosio.system/
+$cleos set contract eosio $eosio_contracts/eosio.system/
 sleep 3s
-$cleos set contract eosio $eosio_contracts/build/eosio.system/
+$cleos set contract eosio $eosio_contracts/eosio.system/
 
 
 
