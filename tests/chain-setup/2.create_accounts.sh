@@ -3,6 +3,10 @@
 cleos=$1
 eosio_contracts=$2
 
+$cleos wallet unlock -n development --password $(cat ~/walletpw.txt)
+
+sleep 3s
+
 $cleos create account eosio eosio.bpay EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn
 $cleos create account eosio eosio.msig EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn
 $cleos create account eosio eosio.names EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn
@@ -34,7 +38,7 @@ $cleos set contract eosio.msig $eosio_contracts/eosio.msig/
 sleep 1s
 $cleos set contract eosio.wrap $eosio_contracts/eosio.wrap/
 
-curl -X POST http://127.0.0.1:8888/v1/producer/schedule_protocol_feature_activations -d '{"protocol_features_to_activate": ["0ec7e080177b2c02b278d5088611686b49d739925a92d9bfcacd7fc6b74053bd"]}' | jq
+curl -X POST http://127.0.0.1:8888/v1/producer/schedule_protocol_feature_activations -d '{"protocol_features_to_activate": ["0ec7e080177b2c02b278d5088611686b49d739925a92d9bfcacd7fc6b74053bd"]}'
 
 
 
