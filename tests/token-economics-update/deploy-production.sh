@@ -3,17 +3,21 @@
 cleos=$1
 eosio_contracts=$2
 ore_contracts=$3
+createescrow_path=$4
 
 $cleos wallet unlock -n local --password PW5KaVyD3RTq5QER4zHLNXoCxJZLCgMWmvpAiXdwwBvKFp5F1g2TL
 
 $cleos system newaccount eosio --transfer eosio.upay EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn --stake-net "10000.0000 SYS" --stake-cpu "10000.0000 SYS" --buy-ram-kbytes 8192 -p eosio
 
-$cleos set contract eosio $eosio_contracts/build/contracts/eosio.system/
+$cleos set contract eosio $eosio_contracts/eosio.system/
 
-$cleos set contract eosio.token $eosio_contracts/build/contracts/eosio.token/
+$cleos set contract eosio.token $eosio_contracts/eosio.token/
 
 # sleep 3s
 $cleos set contract system.ore $ore_contracts/build/ore.system/ ore.system.wasm ore.system.abi
+
+# sleep 3s
+$cleos set contract createescrow $createescrow_path/ createescrow.wasm createescrow.abi
 
 $cleos push action eosio setram '[17179869184]' -p eosio # 16 Gib
 
