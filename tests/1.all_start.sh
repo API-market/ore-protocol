@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd genesis
+cd /root/ore-protocol/tests/genesis
 ./genesis_start.sh
 
 cd ../producer1
