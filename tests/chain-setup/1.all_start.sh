@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd genesis
+cd ../genesis
 ./genesis_start.sh
 
 cd ../producer1
