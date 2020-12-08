@@ -3,8 +3,6 @@ cleos=$1
 
 ore_contracts=$2
 
-$cleos wallet unlock -n local --password PW5KaVyD3RTq5QER4zHLNXoCxJZLCgMWmvpAiXdwwBvKFp5F1g2TL
-
 $cleos transfer eosio ore "10000000.0000 SYS" "test.com,50,10" -p eosio@active
 sleep 1s
 $cleos system newaccount ore --transfer system.ore EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn --stake-net "10000.0000 SYS" --stake-cpu "10000.0000 SYS" --buy-ram-kbytes 8192 -p ore

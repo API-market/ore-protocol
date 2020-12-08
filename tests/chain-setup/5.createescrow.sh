@@ -6,7 +6,6 @@ cleos=$1
 
 createescrow_path=$2
 
-$cleos wallet unlock -n local --password PW5KaVyD3RTq5QER4zHLNXoCxJZLCgMWmvpAiXdwwBvKFp5F1g2TL
 $cleos system newaccount eosio --transfer createescrow EOS6H2tjbrS6zm8d3tX6yeHorEoihP23Ny9c9wFRHGfJp4vtD42rn --stake-net "10000.0000 SYS" --stake-cpu "10000.0000 SYS" --buy-ram-kbytes 8192
 
 # sleep 3s

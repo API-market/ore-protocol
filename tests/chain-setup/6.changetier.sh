@@ -3,7 +3,6 @@ cleos=$1
 eosio_contracts=$2
 ore_eosio_contracts=$3
 
-$cleos wallet unlock -n local --password PW5KaVyD3RTq5QER4zHLNXoCxJZLCgMWmvpAiXdwwBvKFp5F1g2TL
 
 $cleos transfer system.ore test11111111 "100.0000 ORE" "test.com,50,10" -p system.ore
 
