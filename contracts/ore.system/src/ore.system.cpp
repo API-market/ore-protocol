@@ -92,7 +92,7 @@ ACTION oresystem::createoreacc(name creator,
 
     asset createprice = getPrice(minimal_account_price);
     // Calculate createprice from minimal account price and tier requirements
-    createprice.amount = uint64_t((createprice.amount * tieritr->ramfactor) / 10000) + tieritr->netamount.amount + tieritr->cpuamount.amount;
+    createprice.amount = uint64_t((createprice.amount * tieritr->ramfactor) / ramfactor_normalizer) + tieritr->netamount.amount + tieritr->cpuamount.amount;
 
     tierinfotable _tierinfo(_self, newname.value);
     _tierinfo.emplace(_self, [&](auto &ti) {
@@ -175,7 +175,7 @@ ACTION oresystem::chgacctier(name payer, name account, uint64_t tier)
 
     auto newTierItr = _tiers.find(tier);
     asset newprice = getPrice(minimal_account_price);
-    newprice.amount = uint64_t((newprice.amount * newTierItr->ramfactor) / 100) + newTierItr->netamount.amount + newTierItr->cpuamount.amount;
+    newprice.amount = uint64_t((newprice.amount * newTierItr->ramfactor) / ramfactor_normalizer) + newTierItr->netamount.amount + newTierItr->cpuamount.amount;
 
     asset currentCpu = getAccountCpu(account);
     asset currentNet = getAccountNet(account);

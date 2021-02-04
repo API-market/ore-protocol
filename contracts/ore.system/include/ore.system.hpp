@@ -119,4 +119,5 @@ public:
    static constexpr symbol sys_symbol = symbol(symbol_code("SYS"), 4);
 
    static constexpr float emergency_threshold = 0.8;
+   static constexpr uint16_t ramfactor_normalizer = 10000;
 };
