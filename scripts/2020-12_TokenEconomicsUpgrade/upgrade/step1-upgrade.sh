@@ -1,8 +1,8 @@
 #!/bin/bash
 #
 # To run the upgrade there must be a wallet unlock with following keys:
-# eosio@active, eosio.token@active, createescrow@active, system.ore@owner, system.ore@active
-#
+#  ore@active, apim@active, aikon@active eosio@active, eosio.token@active, createescrow@active, system.ore@owner, system.ore@active, lock.ore@owner
+
 cleos="$1"
 eosio_contracts=${2:-~}/contracts-v2/eosio.contracts
 createescrow_path=${2:-~}/contracts-v2/CreateEscrow
